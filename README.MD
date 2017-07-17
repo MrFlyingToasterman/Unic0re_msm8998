@@ -29,17 +29,23 @@ Origin: https://github.com/torvalds/linux <br>
 
     $ mkdir ~/git
     $ cd ~/git
+    $ export ARCH=arm64
+    $ export SUBARCH=arm64
+    $ export CROSS_COMPILE=aarch64-linux-android-
     $ git clone https://github.com/MrFlyingToasterman/android_kernel_oneplus_msm8998
     
 **Download a prebuild toolchain (aarch64-gcc4.9)** <br>
 
     $ git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9
     
+**Create custom Kernelconfig** (this step can be skipt)  
+
+    $ make menuconfig
+    
+(This should be saved as oneplus5_defconfig)
+
 **Build** <br>
 
-    $ export ARCH=arm64
-    $ export SUBARCH=arm64
-    $ export CROSS_COMPILE=aarch64-linux-android-
     $ make oneplus5_defconfig
     $ make
 <br>
