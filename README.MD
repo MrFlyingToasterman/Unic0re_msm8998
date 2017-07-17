@@ -1,10 +1,10 @@
 # Unic0re
 The Unic0re Kernel is a custom Kernel for the OnePlus 5.
-
+<br>
 # Linux 4.x
 This is basically a fork of the Linux 4.x Kernel from Linus Torwalds. <br>
 Origin: https://github.com/torvalds/linux <br>
-
+<br>
 # Features
 - Suppored filesystems:
     - ext2
@@ -20,7 +20,7 @@ Origin: https://github.com/torvalds/linux <br>
     
 - Kernel Govanors:
     - Soon
-
+<br>
 # Building the Unic0re Kernel
 **Prepare** <br>
 
@@ -39,15 +39,15 @@ Origin: https://github.com/torvalds/linux <br>
     $ export CROSS_COMPILE=aarch64-linux-android-
     $ make oneplus5_defconfig
     $ make
-    
+<br>
 # Flash the Unic0re Kernel
 We need to go the fastboot way:
 
     fastboot flash boot kernel.elf  
-    
+<br>
 # Remark
 > **"msm"** is the Kernel tree for Qualcomm chipsets
-
+<br>
 # DISCLAIMER
 Your warranty is now void. <br>
 <br>
@@ -56,6 +56,6 @@ thermonuclear war or you getting fired because the alarm app failed. Please <br>
 do some research if you have any concerns about features included in this Kernel <br>
 before flashing it! YOU are choosing to make these modifications, and if <br>
 you point the finger at us for messing up your device, we will laugh at you. <br>
-
+<br>
 # License
 GPLv2
