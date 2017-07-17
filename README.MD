@@ -40,8 +40,22 @@ Origin: https://github.com/torvalds/linux <br>
     $ make oneplus5_defconfig
     $ make
     
+# Flash the Unic0re Kernel
+We need to go the fastboot way:
+
+    fastboot flash boot kernel.elf  
+    
 # Remark
 > **"msm"** is the Kernel tree for Qualcomm chipsets
+
+# DISCLAIMER
+Your warranty is now void. <br>
+<br>
+We are not responsible for bricked devices, dead SD cards, <br>
+thermonuclear war or you getting fired because the alarm app failed. Please <br>
+do some research if you have any concerns about features included in this Kernel <br>
+before flashing it! YOU are choosing to make these modifications, and if <br>
+you point the finger at us for messing up your device, we will laugh at you. <br>
 
 # License
 GPLv2
