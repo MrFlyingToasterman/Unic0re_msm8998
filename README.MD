@@ -24,6 +24,10 @@ Origin: https://github.com/torvalds/linux <br>
     - Soon
 <br>
 
+# Quick build
+
+    $ sh auto-build.sh
+
 # Building the Unic0re Kernel
 **Prepare** <br>
 
@@ -51,9 +55,9 @@ Origin: https://github.com/torvalds/linux <br>
 <br>
 
 # Flash the Unic0re Kernel
-We need to go the fastboot way:
 
-    fastboot flash boot kernel.elf  
+    adb sideload Unicore-OP5-N.zip
+    
 <br>
 
 # Remark
