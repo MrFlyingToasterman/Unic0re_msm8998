@@ -12,7 +12,6 @@ Origin: https://github.com/torvalds/linux <br>
     $ cd ~/git
     $ git clone https://github.com/MrFlyingToasterman/android_kernel_oneplus_msm8998
     
-    <br>
 **Download a prebuild toolchain (aarch64-gcc4.9)** <br>
 
     $ git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9
@@ -20,9 +19,9 @@ Origin: https://github.com/torvalds/linux <br>
 **Build** <br>
 
     $ export ARCH=arm64
+    $ export SUBARCH=arm64
     $ export CROSS_COMPILE=aarch64-linux-android-
-    $ cd hikey-linaro
-    $ make hikey_defconfig
+    $ make oneplus5_defconfig
     $ make
     
 # Remark
