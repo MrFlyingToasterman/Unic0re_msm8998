@@ -38,7 +38,7 @@ cd $REPACK_DIR
 
 # Clone AnyKernel2 Template
 git clone https://github.com/osm0sis/AnyKernel2/
-rm anykernel.sh
+rm AnyKernel2/anykernel.sh
 
 # Use my AnyKernel config
 cp ../../../arch/arm64/configs/anykernel ./anykernel.sh

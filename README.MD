@@ -8,7 +8,7 @@ Origin: https://github.com/torvalds/linux <br>
 <br>
 
 # Features
-- Suppored filesystems:
+- Supported filesystems:
     - ext2
     - ext3
     - ext4
@@ -17,11 +17,21 @@ Origin: https://github.com/torvalds/linux <br>
     - Fat32
     - vFat
     - XFS
+    - JFS
     - ZFS
     - BtrFS
+    - GFS2
+    - UDF
+    - NFS (client)
     
 - Kernel Govanors:
     - Soon
+
+- Support initial ramdisk compressions:
+    - gzip
+    - bzip2
+    - LZMA
+
 <br>
 
 # Quick build
