@@ -1,4 +1,12 @@
-        Linux kernel release 4.x <http://kernel.org/>
+# UniC0re
+Android Kernel for the Oneplus 5
+
+# How to Compile as Android kernel
+Comes soon
+
+# Original Linux README.MD
+ 
+ Linux kernel release 4.x <http://kernel.org/>
 
 These are the release notes for Linux version 4.  Read them carefully,
 as they tell you what this is all about, explain how to install the
