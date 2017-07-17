@@ -36,15 +36,21 @@ cp -vr $ZIMAGE_DIR/$KERNEL $REPACK_DIR/zImage
 
 cd $REPACK_DIR
 
+# Clone AnyKernel2 Template
 git clone https://github.com/osm0sis/AnyKernel2/
+rm anykernel.sh
 
+# Use my AnyKernel config
 cp ../../../arch/arm64/configs/anykernel ./anykernel.sh
 
+# Merge together
 mv AnyKernel2/* ./
 rm -rf AnyKernel2/
 
+# Zip flashable stuff
 zip -r9 "$VER"-"$VARIANT".zip *
 
-mv "$VER"-"$VARIANT".zip ../../../$ZIP_MOVE
+# Move flashable Zip to out folder
+mv "$VER"-"$VARIANT".zip ../../../$ZIP_MOVE/"[KERNEL] "$VER"-"$VARIANT".zip"
 
 echo "ready."
