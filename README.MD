@@ -64,4 +64,4 @@ before flashing it! YOU are choosing to make these modifications, and if <br>
 you point the finger at us for messing up your device, we will laugh at you. <br>
 <br>
 # License
-GPLv2
+GPLv2 <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html">click here</a> to read more.
