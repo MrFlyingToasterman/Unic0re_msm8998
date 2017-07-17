@@ -5,6 +5,22 @@ The Unic0re Kernel is a custom Kernel for the OnePlus 5.
 This is basically a fork of the Linux 4.x Kernel from Linus Torwalds. <br>
 Origin: https://github.com/torvalds/linux <br>
 
+# Features
+- Suppored filesystems:
+    - ext2
+    - ext3
+    - ext4
+    - f2fs
+    - NTFS
+    - Fat32
+    - vFat
+    - XFS
+    - ZFS
+    - BtrFS
+    
+- Kernel Govanors:
+    - Soon
+
 # Building the Unic0re Kernel
 **Prepare** <br>
 
@@ -25,7 +41,7 @@ Origin: https://github.com/torvalds/linux <br>
     $ make
     
 # Remark
-> "msm" is the Kernel tree for Qualcomm chipsets
+> **"msm"** is the Kernel tree for Qualcomm chipsets
 
 # License
 GPLv2
