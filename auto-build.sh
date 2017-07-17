@@ -21,6 +21,7 @@ ZIP_MOVE="android/kernel/out/op5"
 ZIMAGE_DIR="arch/arm64/boot"
 
 function make_kernel {
+	  git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9
 		echo
 		make $DEFCONFIG
 		make $THREAD
@@ -30,6 +31,7 @@ function make_kernel {
 function make_zip {
 		echo $REPACK_DIR
 		cd $REPACK_DIR
+		git clone https://github.com/osm0sis/AnyKernel2/
 		zip -r9 "$VER"-"$VARIANT".zip *
 		mv "$VER"-"$VARIANT".zip $ZIP_MOVE
 		cd $KERNEL_DIR
