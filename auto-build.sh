@@ -3,9 +3,9 @@
 # Resources
 echo "[INFO] Setting up Resources"
 THREAD="-j$(grep -c ^processor /proc/cpuinfo)"
-KERNEL="zImage-dtb"
+KERNEL="Image.gz-dtb"
 #DEFCONFIG="oneplus5_defconfig"
-DEFCONFIG="oneplus5_defconfig"
+DEFCONFIG="alpha_oneplus5_defconfig"
 
 # Kernel Name
 echo "[INFO] Setting up Kernel Details"
@@ -17,7 +17,6 @@ echo "[INFO] Setting up Varz"
 export LOCALVERSION=~`echo $VER`
 export ARCH=arm64
 export SUBARCH=arm64
-#export TARGET_PREBUILT_KERNEL=arch/arm64/boot/zImage-dtb # Mal mit kompletten Pfad versuchen
 
 # Paths
 echo "[INFO] Setting up Paths"
@@ -32,7 +31,7 @@ mkdir android/kernel/repack
 mkdir android/kernel/packed_zip
 
 # Greeting and some Information
-echo "[INFO] Unic0re Kernel Creation Script:"
+echo "[INFO] Welcome to the Unic0re creation script:"
 echo ""
 echo "[INFO] REPACK_DIR: $REPACK_DIR"
 echo "[INFO] OUTPUT_DIR: $ZIP_MOVE"
@@ -50,11 +49,17 @@ echo "[INFO] ENV SETUP"
 
 # Export path of the CROSS_COMPILER
 echo "[INFO] Setting up CROSS_COMPILER"
-export CROSS_COMPILE=aarch64-linux-android-4.9/bin/aarch64-linux-androidkernel-
+#export CROSS_COMPILE=aarch64-linux-android-4.9/bin/aarch64-linux-androidkernel- ## Google CC
+export CROSS_COMPILE=prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-linaro-4.9/bin/aarch64-linux-android-
 
-# Clone Toolchain from googlesource
-echo "[INFO] Clone Googletoolchain from googlesource"
-git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9
+# Clone Toolchain
+echo "[INFO] Cloning Toolchain..."
+echo "[WARN] In some cases it looks unproductive. But it works! Please stand by!"
+#git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 ## Google Toolchain
+git clone https://android.git.linaro.org/git-ro/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9-linaro.git prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-linaro-4.9
+
+#Extract tar.xz
+tar -xvf gcc-linaro-7.1.1-2017.05-x86_64_aarch64-linux-gnu.tar.xz
 
 # Cleaning
 echo "[INFO] Cleaning Kernelsource..."
