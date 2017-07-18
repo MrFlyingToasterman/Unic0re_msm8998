@@ -45,12 +45,12 @@ Origin: https://github.com/torvalds/linux <br>
     $ cd ~/git
     $ export ARCH=arm64
     $ export SUBARCH=arm64
-    $ export CROSS_COMPILE=aarch64-linux-android-4.9/bin/aarch64-linux-androidkernel-
+    $ export CROSS_COMPILE=prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-linaro-4.9/bin/aarch64-linux-android-
     $ git clone https://github.com/MrFlyingToasterman/android_kernel_oneplus_msm8998
     
 **Download a prebuild toolchain (aarch64-gcc4.9)** <br>
 
-    $ git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9
+    $ git clone https://android.git.linaro.org/git-ro/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9-linaro.git prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-linaro-4.9
     
 **Create custom Kernelconfig** (Only if you know what you are doing)  
 
@@ -59,7 +59,7 @@ Origin: https://github.com/torvalds/linux <br>
 **Build** <br>
 
     $ make oneplus5_defconfig
-    $ make --keep-going
+    $ make --keep-going -i
     
 (You may need to add a "--keep-going" because some modules a prone to crash)
 <br>
