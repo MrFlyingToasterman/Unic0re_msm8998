@@ -5,7 +5,7 @@ echo "[INFO] Setting up Resources"
 THREAD="-j$(grep -c ^processor /proc/cpuinfo)"
 KERNEL="zImage-dtb"
 #DEFCONFIG="oneplus5_defconfig"
-DEFCONFIG="beta_oneplus5_defconfig"
+DEFCONFIG="oneplus5_defconfig"
 
 # Kernel Name
 echo "[INFO] Setting up Kernel Details"
@@ -17,7 +17,7 @@ echo "[INFO] Setting up Varz"
 export LOCALVERSION=~`echo $VER`
 export ARCH=arm64
 export SUBARCH=arm64
-export TARGET_PREBUILT_KERNEL=arch/arm64/boot/zImage-dtb
+#export TARGET_PREBUILT_KERNEL=arch/arm64/boot/zImage-dtb # Mal mit kompletten Pfad versuchen
 
 # Paths
 echo "[INFO] Setting up Paths"
@@ -56,10 +56,14 @@ export CROSS_COMPILE=aarch64-linux-android-4.9/bin/aarch64-linux-androidkernel-
 echo "[INFO] Clone Googletoolchain from googlesource"
 git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9
 
+# Cleaning
+echo "[INFO] Cleaning Kernelsource..."
+make mrproper
+
 # Build the kernel
 echo "[INFO] Start Kernel build!"
 make $DEFCONFIG
-make $THREAD #-o arch/arm64/boot/zImage
+make $THREAD --keep-going #-o arch/arm64/boot/zImage
 
 # Enter REPACK_DIR
 echo "[INFO] Enter REPACK_DIR"
