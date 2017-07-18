@@ -53,4 +53,7 @@ zip -r9 "$VER"-"$VARIANT".zip *
 # Move flashable Zip to out folder
 mv "$VER"-"$VARIANT".zip ../../../$ZIP_MOVE/"[KERNEL] "$VER"-"$VARIANT".zip"
 
+# Create a Link in the root folder
+ls -s ../packed_zip/ ../../../flashable_zip/
+
 echo "ready."
