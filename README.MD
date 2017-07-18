@@ -59,7 +59,9 @@ Origin: https://github.com/torvalds/linux <br>
 **Build** <br>
 
     $ make oneplus5_defconfig
-    $ make
+    $ make --keep-going
+    
+(You may need to add a "--keep-going" because some modules a prone to crash)
 <br>
 
 # Flash the Unic0re Kernel
@@ -68,7 +70,7 @@ You can flash the Kernel via:
 - adb sideload Unic0re.zip
 - A normal TWRP flash
 
-I recommend to use TWRP and make a Backup, **just in case!!**
+I recommend using TWRP and making a backup, **just in case!!**
     
 <br>
 
