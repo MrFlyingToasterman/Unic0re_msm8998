@@ -63,7 +63,7 @@ make mrproper
 # Build the kernel
 echo "[INFO] Start Kernel build!"
 make $DEFCONFIG
-make $THREAD --keep-going #-o arch/arm64/boot/zImage
+make $THREAD --ignore-errors --keep-going #-o arch/arm64/boot/zImage
 
 # Enter REPACK_DIR
 echo "[INFO] Enter REPACK_DIR"
