@@ -3,8 +3,9 @@
 # Resources
 echo "[INFO] Setting up Resources"
 THREAD="-j$(grep -c ^processor /proc/cpuinfo)"
-KERNEL="zImage"
-DEFCONFIG="oneplus5_defconfig"
+KERNEL="zImage-dtb"
+#DEFCONFIG="oneplus5_defconfig"
+DEFCONFIG="beta_oneplus5_defconfig"
 
 # Kernel Name
 echo "[INFO] Setting up Kernel Details"
@@ -16,6 +17,7 @@ echo "[INFO] Setting up Varz"
 export LOCALVERSION=~`echo $VER`
 export ARCH=arm64
 export SUBARCH=arm64
+export TARGET_PREBUILT_KERNEL=arch/arm64/boot/zImage-dtb
 
 # Paths
 echo "[INFO] Setting up Paths"
@@ -37,6 +39,7 @@ echo "[INFO] OUTPUT_DIR: $ZIP_MOVE"
 echo "[INFO] KERNEL_DIR: $ZIMAGE_DIR"
 echo "[INFO] KERNELNAME: $KERNEL"
 echo "[INFO] TARGET:     arm64"
+echo "[INFO] KERNELCONF: $DEFCONFIG"
 echo ""
 
 # Get current Time
@@ -56,7 +59,7 @@ git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarc
 # Build the kernel
 echo "[INFO] Start Kernel build!"
 make $DEFCONFIG
-make $THREAD
+make $THREAD #-o arch/arm64/boot/zImage
 
 # Enter REPACK_DIR
 echo "[INFO] Enter REPACK_DIR"
