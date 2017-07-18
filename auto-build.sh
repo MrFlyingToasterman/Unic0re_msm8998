@@ -2,14 +2,15 @@
 
 # Resources
 THREAD="-j$(grep -c ^processor /proc/cpuinfo)"
-KERNEL="Image.gz-dtb"
+KERNEL="zImage"
 DEFCONFIG="oneplus5_defconfig"
+MASHINE=cat /etc/hostname
 
-# Kernel Details
+# Kernel Name
 VER=Unic0re
 VARIANT="OP5-N"
 
-# Vars
+# Var'z
 export LOCALVERSION=~`echo $VER`
 export ARCH=arm64
 export SUBARCH=arm64
@@ -19,21 +20,37 @@ REPACK_DIR="android/kernel/repack"
 ZIP_MOVE="android/kernel/packed_zip"
 ZIMAGE_DIR="arch/arm64/boot"
 
+# Create some working dirs
 mkdir android/kernel
 mkdir android/kernel/repack
 mkdir android/kernel/packed_zip
 
-echo "Unic0re Kernel Creation Script:"
+# Greeting and some Information
+echo "[INFO] Unic0re Kernel Creation Script:"
 echo ""
+echo "[INFO] REPACK_DIR: $REPACK_DIR"
+echo "[INFO] OUTPUT_DIR: $ZIP_MOVE"
+echo "[INFO] KERNEL_DIR: $KERNEL_DIR"
+echo "[INFO] TARGET:     arm64"
+echo "[INFO] MASHINE:    $MASHINE"
+echo ""
+
+# Get current Time
+DATE_START=$(date +"%s")
+
+### ENV SETUP ###
+
+# Export path of the CROSS_COMPILER
 export CROSS_COMPILE=aarch64-linux-android-4.9/bin/aarch64-linux-androidkernel-
 
+# Clone Toolchain from googlesource
 git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9
 
+# Build the kernel
 make $DEFCONFIG
 make $THREAD
 
-cp -vr $ZIMAGE_DIR/$KERNEL $REPACK_DIR/zImage
-
+# Enter REPACK_DIR
 cd $REPACK_DIR
 
 # Clone AnyKernel2 Template
@@ -47,13 +64,32 @@ cp ../../../arch/arm64/configs/anykernel ./anykernel.sh
 mv AnyKernel2/* ./
 rm -rf AnyKernel2/
 
+# Clean
+rm -rf ramdisk
+rm -rf patch
+rm zImage
+
+cd ../
+
+### ENV READY ###
+
+# Copy the Kernel to REPACK_DIR
+cp -vr $ZIMAGE_DIR/$KERNEL $REPACK_DIR/zImage
+
+# Enter REPACK_DIR
+cd $REPACK_DIR
+
 # Zip flashable stuff
 zip -r9 "$VER"-"$VARIANT".zip *
 
 # Move flashable Zip to out folder
 mv "$VER"-"$VARIANT".zip ../../../$ZIP_MOVE/"[KERNEL] "$VER"-"$VARIANT".zip"
 
-# Create a Link in the root folder
-ls -s ../packed_zip/ ../../../flashable_zip/
+# Show time wasted
+DATE_END=$(date +"%s")
+DIFF=$(($DATE_END - $DATE_START))
+echo "Time: $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) seconds."
+echo
 
+# Ready
 echo "ready."
