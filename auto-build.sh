@@ -4,7 +4,6 @@
 THREAD="-j$(grep -c ^processor /proc/cpuinfo)"
 KERNEL="zImage"
 DEFCONFIG="oneplus5_defconfig"
-MASHINE=cat /etc/hostname
 
 # Kernel Name
 VER=Unic0re
@@ -30,9 +29,9 @@ echo "[INFO] Unic0re Kernel Creation Script:"
 echo ""
 echo "[INFO] REPACK_DIR: $REPACK_DIR"
 echo "[INFO] OUTPUT_DIR: $ZIP_MOVE"
-echo "[INFO] KERNEL_DIR: $KERNEL_DIR"
+echo "[INFO] KERNEL_DIR: $ZIMAGE_DIR"
+echo "[INFO] KERNELNAME: $KERNEL"
 echo "[INFO] TARGET:     arm64"
-echo "[INFO] MASHINE:    $MASHINE"
 echo ""
 
 # Get current Time
