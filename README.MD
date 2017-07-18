@@ -45,19 +45,17 @@ Origin: https://github.com/torvalds/linux <br>
     $ cd ~/git
     $ export ARCH=arm64
     $ export SUBARCH=arm64
-    $ export CROSS_COMPILE=aarch64-linux-android-
+    $ export CROSS_COMPILE=aarch64-linux-android-4.9/bin/aarch64-linux-androidkernel-
     $ git clone https://github.com/MrFlyingToasterman/android_kernel_oneplus_msm8998
     
 **Download a prebuild toolchain (aarch64-gcc4.9)** <br>
 
     $ git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9
     
-**Create custom Kernelconfig** (this step can be skipt)  
+**Create custom Kernelconfig** (Only if you know what you are doing)  
 
-    $ make menuconfig
+    $ make menuconfig oneplus5_defconfig
     
-(This should be saved as oneplus5_defconfig)
-
 **Build** <br>
 
     $ make oneplus5_defconfig
@@ -65,8 +63,12 @@ Origin: https://github.com/torvalds/linux <br>
 <br>
 
 # Flash the Unic0re Kernel
+You can flash the Kernel via:
+- fastboot flash boot Unic0re.zip
+- adb sideload Unic0re.zip
+- A normal TWRP flash
 
-    adb sideload Unicore-OP5-N.zip
+I recommend to use TWRP and make a Backup, **just in case!!**
     
 <br>
 
