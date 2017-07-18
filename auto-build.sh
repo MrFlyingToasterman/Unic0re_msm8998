@@ -50,7 +50,7 @@ make $DEFCONFIG
 make $THREAD
 
 # Enter REPACK_DIR
-cd $REPACK_DIR
+cd android/kernel/repack
 
 # Clone AnyKernel2 Template
 git clone https://github.com/osm0sis/AnyKernel2/
@@ -68,7 +68,8 @@ rm -rf ramdisk
 rm -rf patch
 rm zImage
 
-cd ../
+# Go to root
+cd ../../../
 
 ### ENV READY ###
 
@@ -76,13 +77,13 @@ cd ../
 cp -vr $ZIMAGE_DIR/$KERNEL $REPACK_DIR/zImage
 
 # Enter REPACK_DIR
-cd $REPACK_DIR
+cd android/kernel/repack
 
 # Zip flashable stuff
 zip -r9 "$VER"-"$VARIANT".zip *
 
 # Move flashable Zip to out folder
-mv "$VER"-"$VARIANT".zip ../../../$ZIP_MOVE/"[KERNEL] "$VER"-"$VARIANT".zip"
+mv "$VER"-"$VARIANT".zip ../packed_zip/"[KERNEL] "$VER"-"$VARIANT".zip"
 
 # Show time wasted
 DATE_END=$(date +"%s")
