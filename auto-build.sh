@@ -5,7 +5,11 @@ echo "[INFO] Setting up Resources"
 THREAD="-j$(grep -c ^processor /proc/cpuinfo)"
 KERNEL="Image.gz-dtb"
 #DEFCONFIG="oneplus5_defconfig"
-DEFCONFIG="alpha_oneplus5_defconfig"
+DEFCONFIG="msm-perf_defconfig"
+HOSTNAME="$(cat /etc/hostname)"
+HOSTOS="$(uname -a)"
+UPTIME="$(uptime)"
+GITV="$(git --version)"
 
 # Kernel Name
 echo "[INFO] Setting up Kernel Details"
@@ -33,12 +37,19 @@ mkdir android/kernel/packed_zip
 # Greeting and some Information
 echo "[INFO] Welcome to the Unic0re creation script:"
 echo ""
+echo "[INFO] HOSTNAME  : $HOSTNAME"
+echo "[INFO] HOST_OS   : $HOSTOS"
+echo "[INFO] UPTIME    : $UPTIME"
+echo ""
+echo "[INFO] GIT_VER    : $GITV"
+echo ""
 echo "[INFO] REPACK_DIR: $REPACK_DIR"
 echo "[INFO] OUTPUT_DIR: $ZIP_MOVE"
 echo "[INFO] KERNEL_DIR: $ZIMAGE_DIR"
 echo "[INFO] KERNELNAME: $KERNEL"
-echo "[INFO] TARGET:     arm64"
+echo "[INFO] TARGET    : arm64"
 echo "[INFO] KERNELCONF: $DEFCONFIG"
+echo "[INFO] TOOLCHAIN : linaro 4.9"
 echo ""
 
 # Get current Time
@@ -54,12 +65,12 @@ export CROSS_COMPILE=prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-linar
 
 # Clone Toolchain
 echo "[INFO] Cloning Toolchain..."
-echo "[WARN] In some cases it looks unproductive. But it works! Please stand by!"
+echo "[WARN] In some cases it looks unproductive. But its working! Please stand by!"
 #git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 ## Google Toolchain
 git clone https://android.git.linaro.org/git-ro/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9-linaro.git prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-linaro-4.9
 
 #Extract tar.xz
-tar -xvf gcc-linaro-7.1.1-2017.05-x86_64_aarch64-linux-gnu.tar.xz
+#tar -xvf gcc-linaro-7.1.1-2017.05-x86_64_aarch64-linux-gnu.tar.xz
 
 # Cleaning
 echo "[INFO] Cleaning Kernelsource..."
@@ -68,7 +79,7 @@ make mrproper
 # Build the kernel
 echo "[INFO] Start Kernel build!"
 make $DEFCONFIG
-make $THREAD --ignore-errors --keep-going #-o arch/arm64/boot/zImage
+make $THREAD --ignore-errors --keep-going VERBOSE=1 #-o arch/arm64/boot/zImage
 
 # Enter REPACK_DIR
 echo "[INFO] Enter REPACK_DIR"
