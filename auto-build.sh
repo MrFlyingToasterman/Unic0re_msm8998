@@ -78,12 +78,6 @@ DATE_START=$(date +"%s")
 ### ENV SETUP ###
 echo "[INFO] ENV SETUP"
 
-# Clone Toolchain
-echo "[INFO] Cloning Toolchain..."
-echo "[WARN] In some cases it looks unproductive. But its working! Please stand by!"
-#git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 ## Google Toolchain
-git clone https://android.git.linaro.org/git-ro/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9-linaro.git prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-linaro-4.9
-
 # Cleaning
 echo "[INFO] Cleaning Kernelsource..."
 echo "[WARN] This may drop some errors, just ignore them!"
