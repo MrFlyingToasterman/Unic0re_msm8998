@@ -49,8 +49,28 @@ echo "[INFO] KERNEL_DIR: $ZIMAGE_DIR"
 echo "[INFO] KERNELNAME: $KERNEL"
 echo "[INFO] TARGET    : arm64"
 echo "[INFO] KERNELCONF: $DEFCONFIG"
-echo "[INFO] TOOLCHAIN : linaro 4.9"
+echo "[INFO] TCS_AVLBL : GoogleTC 4.9 || Linaro 4.9"
 echo ""
+
+# See if the user wants google Toolchain or linaro
+echo "[ ?? ] Do you want to use the Google Toolchain ? (y / n)"
+read USE_GT
+if [[ $USE_GT == "N" || $USE_GT == "n" ]]; then
+        echo "[INFO] Using Linaro Toolchain!"
+        # Export path of the CROSS_COMPILER
+        export CROSS_COMPILE=prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-linaro-4.9/bin/aarch64-linux-android- ## Linaro CC
+        # Clone Toolchain
+        echo "[INFO] Cloning Toolchain..."
+        echo "[WARN] In some cases it looks unproductive. But its working! Please stand by!"
+        git clone https://android.git.linaro.org/git-ro/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9-linaro.git prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-linaro-4.9 ## Linaro Toolchain
+else
+        echo "[INFO] Using Google Toolchain!"
+        # Export path of the CROSS_COMPILER
+        export CROSS_COMPILE=aarch64-linux-android-4.9/bin/aarch64-linux-androidkernel- ## Google CC
+        # Clone Toolchain
+        echo "[INFO] Cloning Toolchain..."
+        git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 ## Google Toolchain
+fi
 
 # Get current Time
 DATE_START=$(date +"%s")
@@ -58,22 +78,15 @@ DATE_START=$(date +"%s")
 ### ENV SETUP ###
 echo "[INFO] ENV SETUP"
 
-# Export path of the CROSS_COMPILER
-echo "[INFO] Setting up CROSS_COMPILER"
-#export CROSS_COMPILE=aarch64-linux-android-4.9/bin/aarch64-linux-androidkernel- ## Google CC
-export CROSS_COMPILE=prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-linaro-4.9/bin/aarch64-linux-android-
-
 # Clone Toolchain
 echo "[INFO] Cloning Toolchain..."
 echo "[WARN] In some cases it looks unproductive. But its working! Please stand by!"
 #git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 ## Google Toolchain
 git clone https://android.git.linaro.org/git-ro/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9-linaro.git prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-linaro-4.9
 
-#Extract tar.xz
-#tar -xvf gcc-linaro-7.1.1-2017.05-x86_64_aarch64-linux-gnu.tar.xz
-
 # Cleaning
 echo "[INFO] Cleaning Kernelsource..."
+echo "[WARN] This may drop some errors, just ignore them!"
 make mrproper
 
 # Build the kernel
