@@ -39,7 +39,7 @@ echo "[INFO] Welcome to the Unic0re creation script:"
 echo ""
 echo "[INFO] HOSTNAME  : $HOSTNAME"
 echo "[INFO] HOST_OS   : $HOSTOS"
-echo "[INFO] UPTIME   : $UPTIME"
+echo "[INFO] UPTIME    :$UPTIME"
 echo ""
 echo "[INFO] GIT_VER   : $GITV"
 echo ""
@@ -53,7 +53,7 @@ echo "[INFO] TCS_AVLBL : GoogleTC 4.9 || Linaro 4.9"
 echo ""
 
 # See if the user wants google Toolchain or linaro
-echo "[ ?? ] Do you want to use the Google Toolchain ? (y / n)"
+echo "[ ?? ] Do you want to use the Google Toolchain ? (Y / n)"
 read USE_GT
 if [[ $USE_GT == "N" || $USE_GT == "n" ]]; then
         echo "[INFO] Using Linaro Toolchain!"
