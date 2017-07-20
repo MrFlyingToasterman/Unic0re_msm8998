@@ -58,7 +58,7 @@ Origin: https://github.com/torvalds/linux <br>
     
 **Build** <br>
 
-    $ make oneplus5_defconfig
+    $ make msmcortex_defconfig
     $ make --keep-going -i
     
 (You may need to add a "--keep-going" because some modules a prone to crash)
