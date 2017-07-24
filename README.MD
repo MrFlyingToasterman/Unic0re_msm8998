@@ -51,6 +51,7 @@ How to build with complete source: <br> <br>
 **[Set up environment]**  <br>
 Initialize the environment with the envsetup.sh script.  git a <br>
 `$ . build/envsetup.sh`  <br>
+<br>
 **[Choose a Target]**  <br>
 Choose which target to build with lunch.  <br>
 `$ lunch`  <br>
@@ -60,6 +61,7 @@ Choose which target to build with lunch.  <br>
 **[Build the code]**  <br>
 Build everything with make. GNU make can handle parallel tasks with a -jN argument.  <br>
 `$ make -j4`  <br>
+<br>
 **[Flash a Device]**  <br>
 Let device enter fastboot mode, run  <br>
 `$ adb reboot bootloader`  <br>
@@ -103,8 +105,10 @@ If you want flash new /data partition, run  <br>
 # Flash the Unic0re Kernel
 fastboot  <br>
 `$ fastboot flash boot Unic0re.img`  <br>
+
 adb  <br>
 `$ adb sideload Unic0re.zip`  <br>
+
 TWRP  <br>
 `A normal TWRP flash`  <br>
 
