@@ -35,37 +35,40 @@ You currently need the complete source to build the kernel! <br>
 <a href="https://github.com/OnePlusOSS/android_kernel_oneplus_msm8998/issues/3">More information</a> about this error.
 <br>
 How to build with complete source: <br> <br>
-$ mkdir ~/git && cd ~/git && mkdir oneplus_dev <br>
-$ git clone https://github.com/android/tools_repo <br>
-$ cd oneplus_dev <br>
-$ python2 ../tools_repo/repo init -u git://github.com/OnePlusOSS/android.git -b oneplus/QC8998_N_7.1 --depth=1 <br>
-$ repo sync <br>
+1.
+
+    $ mkdir ~/git && cd ~/git && mkdir oneplus_dev <br>
+    $ git clone https://github.com/android/tools_repo <br>
+    $ cd oneplus_dev <br>
+    $ python2 ../tools_repo/repo init -u git://github.com/OnePlusOSS/android.git -b oneplus/QC8998_N_7.1 --depth=1 <br>
+    $ repo sync <br>
+
 <br>
-2. Root your device  
-3. Pull the necessary libraries from your device by executing the script `pull_library.sh`  
-4. After pull_library.sh be executed, a directory  named "vendor" should be generated. Copy this directory to root of project.
+2. Root your device <br> 
+3. Pull the necessary libraries from your device by executing the script `pull_library.sh` <br> 
+4. After pull_library.sh be executed, a directory  named "vendor" should be generated. Copy this directory to root of project. <br>
 
-**[Set up environment]**  
-Initialize the environment with the envsetup.sh script.  git a
-`$ . build/envsetup.sh`  
-**[Choose a Target]**  
-Choose which target to build with lunch.  
-`$ lunch`  
-      enter **32 for msm8998-userdebug
-              33 for msm8998-user
-
-**[Build the code]**  
-Build everything with make. GNU make can handle parallel tasks with a -jN argument.  
-`$ make -j4`  
-**[Flash a Device]**  
-Let device enter fastboot mode, run  
-`$ adb reboot bootloader`  
-Once the device is in fastboot mode, run  
-`$ fastboot flash boot boot.img`  
-`$ fastboot flash system system.img`  
-If you want flash new /data partition, run  
-`$ fastboot flash userdata userdata.img`
-
+**[Set up environment]**  <br>
+Initialize the environment with the envsetup.sh script.  git a <br>
+`$ . build/envsetup.sh`  <br>
+**[Choose a Target]**  <br>
+Choose which target to build with lunch.  <br>
+`$ lunch`  <br>
+      enter **32 for msm8998-userdebug<br>
+              33 for msm8998-user<br>
+<br>
+**[Build the code]**  <br>
+Build everything with make. GNU make can handle parallel tasks with a -jN argument.  <br>
+`$ make -j4`  <br>
+**[Flash a Device]**  <br>
+Let device enter fastboot mode, run  <br>
+`$ adb reboot bootloader`  <br>
+Once the device is in fastboot mode, run  <br>
+`$ fastboot flash boot boot.img`  <br>
+`$ fastboot flash system system.img`  <br>
+If you want flash new /data partition, run  <br>
+`$ fastboot flash userdata userdata.img`<br>
+<br>
 
 # Quick build
 
@@ -98,12 +101,12 @@ If you want flash new /data partition, run
 <br>
 
 # Flash the Unic0re Kernel
-You can flash the Kernel via:
-- fastboot
-> fastboot flash boot Unic0re.img   
-- adb
-> adb sideload Unic0re.zip
-- A normal TWRP flash
+fastboot  <br>
+`$ fastboot flash boot Unic0re.img`  <br>
+adb  <br>
+`$ adb sideload Unic0re.zip`  <br>
+TWRP  <br>
+`A normal TWRP flash`  <br>
 
 I recommend using TWRP and making a backup, **just in case!!**
     
