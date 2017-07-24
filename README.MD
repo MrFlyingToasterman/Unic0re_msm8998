@@ -27,12 +27,11 @@ Origin: https://github.com/torvalds/linux <br>
 - Kernel Govanors:
     - Soon
 
-- Support initial ramdisk compressions:
-    - gzip
-    - bzip2
-    - LZMA
-
 <br>
+
+# Build Issue
+
+
 
 # Quick build
 
@@ -66,8 +65,14 @@ Origin: https://github.com/torvalds/linux <br>
 
 # Flash the Unic0re Kernel
 You can flash the Kernel via:
-- fastboot flash boot Unic0re.zip
-- adb sideload Unic0re.zip
+- fastboot 
+
+    fastboot flash boot Unic0re.img
+
+- adb
+
+    adb sideload Unic0re.zip
+    
 - A normal TWRP flash
 
 I recommend using TWRP and making a backup, **just in case!!**
