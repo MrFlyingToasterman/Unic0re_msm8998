@@ -29,8 +29,42 @@ Origin: https://github.com/torvalds/linux <br>
 
 <br>
 
-# Build Issue
+# Building issue
+Currently, there is a building problem! <br>
+You currently need the complete source to build the kernel! <br>
+<a href="https://github.com/OnePlusOSS/android_kernel_oneplus_msm8998/issues/3">More information</a> about this error.
+<br>
+How to build with complete source: <br> <br>
+$ mkdir ~/git && cd ~/git && mkdir oneplus_dev <br>
+$ git clone https://github.com/android/tools_repo <br>
+$ cd oneplus_dev <br>
+$ python2 ../tools_repo/repo init -u git://github.com/OnePlusOSS/android.git -b oneplus/QC8998_N_7.1 --depth=1 <br>
+$ repo sync <br>
+<br>
+2. Root your device  
+3. Pull the necessary libraries from your device by executing the script `pull_library.sh`  
+4. After pull_library.sh be executed, a directory  named "vendor" should be generated. Copy this directory to root of project.
 
+**[Set up environment]**  
+Initialize the environment with the envsetup.sh script.  git a
+`$ . build/envsetup.sh`  
+**[Choose a Target]**  
+Choose which target to build with lunch.  
+`$ lunch`  
+      enter **32 for msm8998-userdebug
+              33 for msm8998-user
+
+**[Build the code]**  
+Build everything with make. GNU make can handle parallel tasks with a -jN argument.  
+`$ make -j4`  
+**[Flash a Device]**  
+Let device enter fastboot mode, run  
+`$ adb reboot bootloader`  
+Once the device is in fastboot mode, run  
+`$ fastboot flash boot boot.img`  
+`$ fastboot flash system system.img`  
+If you want flash new /data partition, run  
+`$ fastboot flash userdata userdata.img`
 
 
 # Quick build
