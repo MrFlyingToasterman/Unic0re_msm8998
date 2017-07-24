@@ -33,7 +33,7 @@ Origin: https://github.com/torvalds/linux <br>
 Currently, there is a building problem! <br>
 You currently need the complete source to build the kernel! <br>
 <a href="https://github.com/OnePlusOSS/android_kernel_oneplus_msm8998/issues/3">More information</a> about this error.
-<br>
+
 How to build with complete source: <br>
 1.
 
@@ -43,7 +43,6 @@ How to build with complete source: <br>
     $ python2 ../tools_repo/repo init -u git://github.com/OnePlusOSS/android.git -b oneplus/QC8998_N_7.1 --depth=1
     $ repo sync
 
-<br>
 2. Root your device
 
 3. Pull the necessary libraries from your device by executing the script `pull_library.sh`
