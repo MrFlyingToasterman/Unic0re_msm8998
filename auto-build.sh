@@ -58,7 +58,7 @@ echo "[INFO] TCS_AVLBL : GoogleTC 4.9 || Linaro 4.9"
 echo ""
 
 # See if the user wants google Toolchain or linaro
-echo "[ ?? ] Do you want to use the Google Toolchain ? (Y / n)"
+echo "[ ?? ] Do you want to use the Google Toolchain ? [Y / n]"
 read USE_GT
 if [[ $USE_GT == "N" || $USE_GT == "n" ]]; then
         echo "[INFO] Using Linaro Toolchain!"
@@ -77,21 +77,28 @@ else
         git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 ## Google Toolchain
 fi
 
+# See if the user wants to clean
+echo "[ ?? ] Do you want to clean sources ? [Y / n]"
+read USE_GT
+if [[ $USE_GT == "N" || $USE_GT == "n" ]]; then
+  echo "[WARN] Not cleaning sources!"
+else
+  # Cleaning
+  echo "[INFO] Cleaning Kernelsource..."
+  echo "[WARN] This may drop some errors, just ignore them!"
+  make mrproper
+fi
+
 # Get current Time
 DATE_START=$(date +"%s")
 
 ### ENV SETUP ###
 echo "[INFO] ENV SETUP"
 
-# Cleaning
-echo "[INFO] Cleaning Kernelsource..."
-echo "[WARN] This may drop some errors, just ignore them!"
-make mrproper
-
 # Build the kernel
 echo "[INFO] Start Kernel build!"
-make $DEFCONFIG O=out/
-make $THREAD O=out/ #--ignore-errors --keep-going VERBOSE=1 #-o arch/arm64/boot/zImage
+make $DEFCONFIG
+make $THREAD #VERBOSE=1
 
 # Enter REPACK_DIR
 echo "[INFO] Enter REPACK_DIR"
