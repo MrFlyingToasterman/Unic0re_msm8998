@@ -106,7 +106,7 @@ cd android/kernel/repack
 
 # Get local Version of AnyKernel
 echo "[INFO] Prepare AnyKernel2"
-cp -R $ROOT_DIR/AnyKernel/* ./
+cp -vr $ROOT_DIR/AnyKernel/* ./
 
 # Clean
 echo "[INFO] cleaning up"
@@ -129,7 +129,7 @@ echo "[INFO] Enter REPACK_DIR"
 cd android/kernel/repack
 
 # Copy every module to android/kernel/repack/modules
-find $ROOT_DIR-name '*.ko' -exec cp -v {} $ROOT_DIR/android/kernel/repack/modules/ \;
+find $ROOT_DIR -name '*.ko' -exec cp -v {} $ROOT_DIR/android/kernel/repack/modules/ \;
 
 # Zip flashable stuff
 echo "[INFO] Creating flashable ZIP!"
