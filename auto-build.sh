@@ -1,11 +1,13 @@
 #! /bin/bash
 
+# Choose your defconf
+DEFCONFIG="lineage_cheeseburger_defconfig"
+
 # Resources
 echo "[INFO] Setting up Resources"
 THREAD="-j$(grep -c ^processor /proc/cpuinfo)"
 KERNEL="Image.gz-dtb"
-#DEFCONFIG="oneplus5_defconfig"
-DEFCONFIG="msmcortex_defconfig"
+#DEFCONFIG="msmcortex_defconfig"
 HOSTNAME="$(cat /etc/hostname)"
 HOSTOS="$(uname -a)"
 UPTIME="$(uptime)"
@@ -31,6 +33,7 @@ ROOT_DIR="$(pwd)"
 
 # Create some working dirs
 echo "[INFO] Create some working dirs"
+mkdir out
 mkdir android/kernel
 mkdir android/kernel/repack
 mkdir android/kernel/packed_zip
@@ -88,7 +91,7 @@ make mrproper
 # Build the kernel
 echo "[INFO] Start Kernel build!"
 make $DEFCONFIG
-make $THREAD --ignore-errors --keep-going VERBOSE=1 #-o arch/arm64/boot/zImage
+make $THREAD -O="out/" #--ignore-errors --keep-going VERBOSE=1 #-o arch/arm64/boot/zImage
 
 # Enter REPACK_DIR
 echo "[INFO] Enter REPACK_DIR"
