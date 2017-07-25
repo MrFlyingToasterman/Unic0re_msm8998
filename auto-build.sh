@@ -128,8 +128,8 @@ cp -vr $ZIMAGE_DIR/$KERNEL $REPACK_DIR/zImage
 echo "[INFO] Enter REPACK_DIR"
 cd android/kernel/repack
 
-# Copy Modules to android/kernel/repack/modules
-find $KERNEL_DIR -name '*.ko' -exec cp -v {} modules/ \;
+# Copy every module to android/kernel/repack/modules
+find $ROOT_DIR-name '*.ko' -exec cp -v {} $ROOT_DIR/android/kernel/repack/modules/ \;
 
 # Zip flashable stuff
 echo "[INFO] Creating flashable ZIP!"
