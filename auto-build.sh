@@ -112,7 +112,6 @@ cp -R $ROOT_DIR/AnyKernel/* ./
 echo "[INFO] cleaning up"
 rm -rf ramdisk/
 rm -rf patch/
-rm zImage
 
 # Go to root
 echo "[INFO] Leaving dir.."
@@ -128,6 +127,9 @@ cp -vr $ZIMAGE_DIR/$KERNEL $REPACK_DIR/zImage
 # Enter REPACK_DIR
 echo "[INFO] Enter REPACK_DIR"
 cd android/kernel/repack
+
+# Copy Modules to android/kernel/repack/modules
+find $KERNEL_DIR -name '*.ko' -exec cp -v {} modules/ \;
 
 # Zip flashable stuff
 echo "[INFO] Creating flashable ZIP!"
