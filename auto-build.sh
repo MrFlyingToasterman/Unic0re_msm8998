@@ -63,7 +63,7 @@ read USE_GT
 if [[ $USE_GT == "N" || $USE_GT == "n" ]]; then
         echo "[INFO] Using Linaro Toolchain!"
         # Export path of the CROSS_COMPILER
-        export CROSS_COMPILE=prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-linaro-4.9/bin/aarch64-linux-android- ## Linaro CC
+        export CROSS_COMPILE=$ROOT_DIR/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-linaro-4.9/bin/aarch64-linux-android- ## Linaro CC
         # Clone Toolchain
         echo "[INFO] Cloning Toolchain..."
         echo "[WARN] In some cases it looks unproductive. But its working! Please stand by!"
@@ -71,7 +71,7 @@ if [[ $USE_GT == "N" || $USE_GT == "n" ]]; then
 else
         echo "[INFO] Using Google Toolchain!"
         # Export path of the CROSS_COMPILER
-        export CROSS_COMPILE=aarch64-linux-android-4.9/bin/aarch64-linux-androidkernel- ## Google CC
+        export CROSS_COMPILE=$ROOT_DIR/aarch64-linux-android-4.9/bin/aarch64-linux-androidkernel- ## Google CC
         # Clone Toolchain
         echo "[INFO] Cloning Toolchain..."
         git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 ## Google Toolchain
@@ -97,8 +97,8 @@ echo "[INFO] ENV SETUP"
 
 # Build the kernel
 echo "[INFO] Start Kernel build!"
-make $DEFCONFIG
-make $THREAD #VERBOSE=1
+make $DEFCONFIG o=out
+make $THREAD o=out #VERBOSE=1
 
 # Enter REPACK_DIR
 echo "[INFO] Enter REPACK_DIR"
