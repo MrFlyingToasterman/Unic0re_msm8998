@@ -33,20 +33,22 @@ Origin: https://github.com/torvalds/linux <br>
 Currently, there is a building problem! <br>
 You currently need the complete source to build the kernel! <br>
 <a href="https://github.com/OnePlusOSS/android_kernel_oneplus_msm8998/issues/3">More information</a> about this error.
-<br>
-How to build with complete source: <br> <br>
+
+How to build with complete source: <br>
 1.
 
-    $ mkdir ~/git && cd ~/git && mkdir oneplus_dev <br>
-    $ git clone https://github.com/android/tools_repo <br>
-    $ cd oneplus_dev <br>
-    $ python2 ../tools_repo/repo init -u git://github.com/OnePlusOSS/android.git -b oneplus/QC8998_N_7.1 --depth=1 <br>
-    $ repo sync <br>
+    $ mkdir ~/git && cd ~/git && mkdir oneplus_dev
+    $ git clone https://github.com/android/tools_repo
+    $ cd oneplus_dev
+    $ python2 ../tools_repo/repo init -u git://github.com/OnePlusOSS/android.git -b oneplus/QC8998_N_7.1 --depth=1
+    $ repo sync
 
-<br>
-2. Root your device <br> 
-3. Pull the necessary libraries from your device by executing the script `pull_library.sh` <br> 
-4. After pull_library.sh be executed, a directory  named "vendor" should be generated. Copy this directory to root of project. <br>
+2. Root your device
+
+3. Pull the necessary libraries from your device by executing the script `pull_library.sh`
+
+4. After pull_library.sh be executed, a directory  named "vendor" should be generated. Copy this directory to root of 
+project. <br>
 
 **[Set up environment]**  <br>
 Initialize the environment with the envsetup.sh script.  git a <br>
