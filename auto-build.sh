@@ -27,6 +27,7 @@ echo "[INFO] Setting up Paths"
 REPACK_DIR="android/kernel/repack"
 ZIP_MOVE="android/kernel/packed_zip"
 ZIMAGE_DIR="arch/arm64/boot"
+ROOT_DIR="$(pwd)"
 
 # Create some working dirs
 echo "[INFO] Create some working dirs"
@@ -92,19 +93,9 @@ make $THREAD --ignore-errors --keep-going VERBOSE=1 #-o arch/arm64/boot/zImage
 echo "[INFO] Enter REPACK_DIR"
 cd android/kernel/repack
 
-# Clone AnyKernel2 Template
-echo "[INFO] Clone AnyKernel2 from GitHub"
-git clone https://github.com/osm0sis/AnyKernel2/
-rm AnyKernel2/anykernel.sh
-
-# Use my AnyKernel config
-echo "[INFO] Restore AnyKernel conf"
-cp ../../../arch/arm64/configs/anykernel ./anykernel.sh
-
-# Merge together
-echo "[INFO] Mergeing..."
-mv AnyKernel2/* ./
-rm -rf AnyKernel2/
+# Get local Version of AnyKernel
+echo "[INFO] Prepare AnyKernel2"
+cp -R $ROOT_DIR/AnyKernel/* ./
 
 # Clean
 echo "[INFO] cleaning up"
@@ -114,7 +105,7 @@ rm zImage
 
 # Go to root
 echo "[INFO] Leaving dir.."
-cd ../../../
+cd $ROOT_DIR
 
 ### ENV READY ###
 echo "[INFO] ENV READY"
