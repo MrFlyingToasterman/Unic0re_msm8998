@@ -8,6 +8,8 @@ Origin: https://github.com/torvalds/linux <br>
 <br>
 
 # Features
+- SELinux default: permissive
+
 - Supported filesystems:
     - ext2
     - ext3
@@ -25,6 +27,9 @@ Origin: https://github.com/torvalds/linux <br>
     - NFS (client)
     
 - Kernel Govanors:
+    - Soon
+
+- I/O Schedulers:
     - Soon
 
 <br>
@@ -53,8 +58,8 @@ Origin: https://github.com/torvalds/linux <br>
     
 **Build** <br>
 
-    $ make msmcortex_defconfig
-    $ make --keep-going -i
+    $ make lineage_cheeseburger_defconfig
+    $ make
     
 (You may need to add a "--keep-going" because some modules a prone to crash)
 <br>
