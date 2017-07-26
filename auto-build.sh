@@ -130,6 +130,7 @@ cd android/kernel/repack
 
 # Copy every module to android/kernel/repack/modules
 find $ROOT_DIR -name '*.ko' -exec cp -v {} $ROOT_DIR/android/kernel/repack/modules/ \;
+
 rm $ROOT_DIR/android/kernel/repack/modules/placeholder
 
 # Zip flashable stuff
