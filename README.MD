@@ -1,6 +1,9 @@
-# Unic0re
-The Unic0re Kernel is a custom Kernel for the OnePlus 5.
+# Unic0re MSM8998
+The Unic0re Kernel is a custom Kernel for the OnePlus 5 with a focus on govanors, security and filesystem support.
 <br>
+
+# Preview
+![Unic0re_msm8998](preview.png?raw=true "Preview")
 
 # Linux 4.x
 This is basically a fork of the Linux 4.x Kernel from Linus Torwalds. <br>
@@ -66,10 +69,10 @@ Origin: https://github.com/torvalds/linux <br>
 
 # Flash the Unic0re Kernel
 fastboot  <br>
-`$ fastboot flash boot Unic0re.img`  <br>
+`# fastboot flash boot Unic0re.img`  <br>
 
 adb  <br>
-`$ adb sideload Unic0re.zip`  <br>
+`# adb sideload Unic0re.zip`  <br>
 
 TWRP  <br>
 `A normal TWRP flash`  <br>
@@ -82,6 +85,10 @@ I recommend using TWRP and making a backup, **just in case!!**
 > **"msm"** is the Kernel tree for Qualcomm chipsets
 <br>
 
+# This project is supported by Secure Solutions
+![Unic0re_msm8998](logo_big.png?raw=true "Secure-Solutions-Germany")
+https://Secure-Solutions.org/
+
 # DISCLAIMER
 Your warranty is now void. <br>
 <br>
@@ -91,5 +98,15 @@ do some research if you have any concerns about features included in this Kernel
 before flashing it! YOU are choosing to make these modifications, and if <br>
 you point the finger at us for messing up your device, we will laugh at you. <br>
 <br>
-# License
+
+# License of the origin Linux Kernel
 GPLv2 <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html">click here</a> to read more.
+
+# License for our modifications
+![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)
+
+This program is Free Software: You can use, study share and improve it at your
+will. Specifically you can redistribute and/or modify it under the terms of the
+[GNU General Public License](https://www.gnu.org/licenses/gpl.html) as
+published by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
