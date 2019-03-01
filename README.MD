@@ -86,8 +86,9 @@ I recommend using TWRP and making a backup, **just in case!!**
 <br>
 
 # This project is supported by Secure Solutions
-![Unic0re_msm8998](logo_big.png?raw=true "Secure-Solutions-Germany")
-https://Secure-Solutions.org/
+![Unic0re_msm8998](logo_big.png?raw=true "Secure-Solutions-Germany" )
+<br>
+Visit our Webside: https://Secure-Solutions.org/
 
 # DISCLAIMER
 Your warranty is now void. <br>
